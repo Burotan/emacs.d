@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; Default config
 (setq inhibit-startup-message t
       visible-bell t)
@@ -14,7 +16,7 @@
 (setq c-basic-offset 2)
 (setq js-indent-level 2)
 
-(set-face-attribute 'default nil :font "Iosevka NFP" :height 200)
+(set-face-attribute 'default nil :font "Iosevka NFP" :height 180)
 
 (setq display-line-numbers-type 'relative)
 (column-number-mode)
@@ -22,7 +24,10 @@
 (global-hl-line-mode 1)
 
 ;; Basic keybindings unneccesary use emacs keybinding
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(global-set-key (kbd "<escape>")
+                'keyboard-escape-quit) ;; only one escape key
+(global-set-key (kbd "M-k")
+                (kbd "C-a C-k C-k"))   ;; Cut current line
 
 ;; Default split behavior
 (setq split-height-threshold nil
@@ -47,11 +52,6 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; themes
-;;(use-package gruber-darker-theme)
-;;(use-package kanagawa-themes)
-;; (load-theme 'kanagawa-dragon t)
-
 (use-package base16-theme
   :ensure t
   :config
@@ -63,7 +63,7 @@
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   :config
-  (setq company-minimum-prefix-length 1 ; 1 karakter yazınca öneriler başlasın
+  (setq company-minimum-prefix-length 1
         company-idle-delay 0.0))
 
 ;; Ivy 
@@ -71,9 +71,9 @@
   :ensure t
   :diminish ivy-mode
   :custom
-  (ivy-use-virtual-buffers t)           ; recentf + bookmarks de görünsün
-  (ivy-count-format "(%d/%d) ")         ; 5/120 gibi gösterim
-  (ivy-height 10)                       ; minibuffer yüksekliği
+  (ivy-use-virtual-buffers t)           ; recentf + bookmarks 
+  (ivy-count-format "(%d/%d) ")         ; 5/120
+  (ivy-height 10)                       ; minibuffer height
   :config
   (ivy-mode 1))
 
@@ -91,11 +91,11 @@
   :bind
   (("M-x"          . counsel-M-x)
    ("C-x C-f"      . counsel-find-file)
-   ("C-x b"        . counsel-switch-buffer)     ; ivy-switch-buffer de olur
+   ("C-x b"        . counsel-switch-buffer)
    ("C-x C-r"      . counsel-recentf)
    ("C-h f"        . counsel-describe-function)
    ("C-h v"        . counsel-describe-variable)
-   ("C-c g"        . counsel-git)               ; opsiyonel
+   ("C-c g"        . counsel-git)
    ("C-c j"        . counsel-git-grep))
   :config
   (counsel-mode 1))
