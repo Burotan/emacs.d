@@ -110,6 +110,44 @@
     :config
     (which-key-mode))
 
+(use-package expand-region
+  :ensure t
+  :bind ("C-;" . er/expand-region))
+
+;; Languages
+
+;; Typescript
+(use-package typescript-mode
+  :ensure t)
+
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
+(use-package tide
+  :after(typescript-mode flycheck))
+
+
+
+;; ;; Treesitter
+;; (setq treesit-language-source-alist
+;;    '((cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+;;      (c "https://github.com/tree-sitter/tree-sitter-c")
+;;      (go "https://github.com/tree-sitter/tree-sitter-go")
+;;      (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+;;      (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")))
+
+;; (use-package treesit-auto
+;;   :ensure t
+;;   :custom
+;;   (treesit-auto-install 'prompt)
+;;   :config
+;;   (treesit-auto-add-to-auto-mode-alist 'all)
+;;   (global-treesit-auto-mode))
+
+
+
 ;; other stuff
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -120,3 +158,7 @@
   kept-new-versions 6
   kept-old-versions 2
   version-control t)
+
+
+
+
