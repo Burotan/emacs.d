@@ -1,5 +1,0 @@
-all:
-gcc main.c -o cookies \
--I/opt/homebrew/opt/curl/include \
--L/opt/homebrew/opt/curl/lib \
--lcurl		
