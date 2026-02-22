@@ -16,7 +16,7 @@
 (setq c-basic-offset 2)
 (setq js-indent-level 2)
 
-(set-face-attribute 'default nil :font "Iosevka NFP" :height 180)
+(set-face-attribute 'default nil :font "Iosevka NFP" :height 200)
 
 (setq display-line-numbers-type 'relative)
 (column-number-mode)
@@ -115,7 +115,6 @@
   :bind ("C-;" . er/expand-region))
 
 ;; Languages
-
 ;; Typescript
 (use-package typescript-mode
   :ensure t)
@@ -128,25 +127,13 @@
 (use-package tide
   :after(typescript-mode flycheck))
 
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-
-;; ;; Treesitter
-;; (setq treesit-language-source-alist
-;;    '((cpp "https://github.com/tree-sitter/tree-sitter-cpp")
-;;      (c "https://github.com/tree-sitter/tree-sitter-c")
-;;      (go "https://github.com/tree-sitter/tree-sitter-go")
-;;      (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
-;;      (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")))
-
-;; (use-package treesit-auto
-;;   :ensure t
-;;   :custom
-;;   (treesit-auto-install 'prompt)
-;;   :config
-;;   (treesit-auto-add-to-auto-mode-alist 'all)
-;;   (global-treesit-auto-mode))
-
-
+(use-package magit
+  :ensure t)
 
 ;; other stuff
 (setq custom-file "~/.emacs.d/custom.el")
