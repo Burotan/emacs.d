@@ -16,7 +16,7 @@
 (setq c-basic-offset 2)
 (setq js-indent-level 2)
 
-(set-face-attribute 'default nil :font "Iosevka NFP" :height 180)
+(set-face-attribute 'default nil :font "Iosevka NFP" :height 200)
 
 (setq display-line-numbers-type 'relative)
 (column-number-mode)
@@ -109,6 +109,14 @@
 (use-package which-key
     :config
     (which-key-mode))
+
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package magit
+  :ensure t)
 
 ;; other stuff
 (setq custom-file "~/.emacs.d/custom.el")
