@@ -139,6 +139,10 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+
+(setq auto-save-file-name-transforms
+      `((".*" ,(concat user-emacs-directory "auto-save/") t)))
+
 (setq backup-directory-alist `(("." . "~/.emacs.d/backup")))
 (setq backup-by-copying t)
 (setq delete-old-versions t
@@ -146,6 +150,6 @@
   kept-old-versions 2
   version-control t)
 
-
+;;; init.el ends here
 
 
